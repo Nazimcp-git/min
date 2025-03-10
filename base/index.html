@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks Lookup</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Minimal UI enhancements for student page */
+    .student-page header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+      font-size: 1.5em;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    }
+    .lookup-container {
+      max-width: 400px;
+      margin: 2em auto;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .lookup-container input {
+      width: 80%;
+      padding: 0.75em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .lookup-container select {
+      width: 80%;
+      padding: 0.75em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .lookup-container button {
+      padding: 0.75em 1.5em;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .lookup-container button:hover {
+      background-color: #0056b3;
+    }
+    .result-container {
+      max-width: 600px;
+      margin: 2em auto;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .result-container h2 {
+      margin-bottom: 0.5em;
+    }
+    #marks-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    #marks-table th,
+    #marks-table td {
+      border: 1px solid #ddd;
+      padding: 0.75em;
+      text-align: left;
+    }
+    #marks-table th {
+      background-color: #f2f2f2;
+    }
+    #summary {
+      margin-top: 2em;
+      padding: 0.75em;
+      background: #e9ecef;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .error-message {
+      color: red;
+      margin-top: 1em;
+    }
+    .down{
+      max-width: 600px;
+      margin: 1em auto;
+      margin-top: 0.75em;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+    }
+  </style>
+</head>
+<body class="student-page">
+  <header>
+    Student Marks Lookup
+  </header>
+  <div class="lookup-container">
+    <input type="text" id="student-id-input" placeholder="Enter your Student ID" />
+    <select name="class" id="classDropdown">
+      <option value="" disabled selected>Select your Class</option>
+      <option value="1">Class 1</option>
+      <option value="2">Class 2</option>
+      <option value="3">Class 3</option>
+      <option value="4">Class 4</option>
+      <option value="6">Class 6</option>
+      <option value="8">Class 8</option>
+      <option value="9">Class 9</option>
+    </select>
+    <button id="lookup-btn">View Marks</button>
+    <p id="lookup-error" class="error-message"></p>
+  </div>
+  <div id="result" class="result-container" style="display:none;">
+    <h2 style="text-align: center;">Muneerul Islam Madrasa, Koottanad Town</h2>
+    <h3 style="text-align: center;">Annual Exam Result - 2025</h3>
+    <hr>
+    <h3 id="student-name"></h3>
+    <h4 id="classes"></h4>
+    <p id="overall-status"></p>
+    <table id="marks-table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Marks rows will be inserted here -->
+      </tbody>
+    </table>
+    <div id="summary"></div>
+  </div>
+  
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="student.js"></script>
+</body>
+</html>

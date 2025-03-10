@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrasa Committee</title>
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+:root {
+  --br: 20px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  text-align: center;
+}
+.row {
+  display: flex;
+  gap: 20px;
+}
+.card {
+  width: 240px;
+  background: #fff;
+  padding: 15px;
+  border-radius: var(--br);
+  transition: 0.5s;
+}
+.card:hover {
+  box-shadow: 0px 3px 10px 5px #e9e9e9;
+}
+.card img {
+  max-width: 100%;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  border: 4px solid var(--bc, #000);
+}
+h1 {
+  margin: 20px 0;
+}
+h2 {
+  margin: 15px 0 5px;
+}
+.card .role {
+  font-size: 80%;
+  color: #444;
+  margin-bottom: 20px;
+}
+.card a {
+  background: var(--btn, #000);
+  color: #fff;
+  padding: 10px 15px;
+  width: 100%;
+  display: block;
+  border-radius: var(--br);
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+@media (max-width: 767px) {
+  .row {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .card {
+    flex: 0 0 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    flex: 0 0 calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
+}
+</style>
+<body>
+<div class="container">
+  <h1>Madrasa Staff</h1>
+  <div class="row">
+    <div class="card" style="--bc: #15307D;--btn: #15307D;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/sadr.jpg" alt="*">
+      <h2>Nasar Faizy</h2>
+      <p class="role">Class 4 In charge</p>
+      <a href="tel:+919495539360">Call</a>
+    </div>
+    <div class="card" style="--bc: #C89F9C;--btn: #C89F9C;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/ali.jpg" alt="*">
+      <h2>Ali Musliyar</h2>
+      <p class="role">Class 2 In charge</p>
+      <a href="tel:+919446727029">Call</a>
+    </div>
+    <div class="card" style="--bc: #8E9792;--btn: #8E9792;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/haneefa.jpg" alt="*">
+      <h2>Haneefa Baqawi</h2>
+      <p class="role">Class 6 In charge</p>
+      <a href="tel:+919447670945">Call</a>
+    </div>
+    <div class="card" style="--bc: #15307D;--btn: #15307D;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/musthafa.jpg" alt="*">
+      <h2>Musthafa Musliyar</h2>
+      <p class="role">Class 1 In charge</p>
+      <a href="tel:+919846630932">Call</a>
+    </div>
+    <div class="card" style="--bc: #C89F9C;--btn: #C89F9C;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/rafeeq.jpg" alt="*">
+      <h2>Rafeeq Busthani</h2>
+      <p class="role">Class 5, 8 In charge</p>
+      <a href="tel:+919747345357">Call</a>
+    </div>
+    <div class="card" style="--bc: #8E9792;--btn: #8E9792;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/shawkath.jpg" alt="*">
+      <h2>Shawkath Musliyar</h2>
+      <p class="role">Class 3 In charge</p>
+      <a href="tel:+919946507839">Call</a>
+    </div>
+    <div class="card" style="--bc: #15307D;--btn: #15307D;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/suhri.jpg" alt="*">
+      <h2>Basheer Suhri</h2>
+      <p class="role">Class 8, 9 In charge</p>
+      <a href="tel:+919846634682">Call</a>
+    </div>
+    <div class="card" style="--bc: #C89F9C;--btn: #C89F9C;">
+      <img src="https://muneerul-islam-madrasa.vercel.app/com/img/umar.jpg" alt="*">
+      <h2>Umar Ahsani</h2>
+      <p class="role">Ullas Nagar</p>
+      <a href="tel:+919745456014">Call</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
