@@ -18,6 +18,7 @@ document.getElementById("lookup-btn").addEventListener("click", lookupStudent);
 function lookupStudent() {
   const studentId = document.getElementById("student-id-input").value.trim();
   const errorEl = document.getElementById("lookup-error");
+  document.getElementById("loading").innerHTML = "Loading... Please Wait"
   errorEl.innerText = "";
   
   if (studentId === "") {
@@ -58,6 +59,7 @@ function lookupStudent() {
 
 
       document.getElementById("result").style.display = "block";
+      document.getElementById("loading").style.display = "none";
       document.getElementById("student-name").innerText = "Name: " + studentRecord.name;
       
       
