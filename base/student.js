@@ -18,7 +18,6 @@ document.getElementById("lookup-btn").addEventListener("click", lookupStudent);
 function lookupStudent() {
   const studentId = document.getElementById("student-id-input").value.trim();
   const errorEl = document.getElementById("lookup-error");
-  document.getElementById("loading").innerHTML = "Loading... Please Wait"
   errorEl.innerText = "";
   
   if (studentId === "") {
@@ -46,6 +45,8 @@ function lookupStudent() {
       document.getElementById("result").style.display = "none";
     } else {
       // Display the student details and marks
+      removeCont = document.getElementById("lookupCont");
+      removeCont.style.display = "none";
 
       var dropdown = document.getElementById("classDropdown");
         var selectedClass = dropdown.value;
@@ -59,7 +60,6 @@ function lookupStudent() {
 
 
       document.getElementById("result").style.display = "block";
-      document.getElementById("loading").style.display = "none";
       document.getElementById("student-name").innerText = "Name: " + studentRecord.name;
       
       
