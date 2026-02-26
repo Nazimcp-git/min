@@ -101,10 +101,10 @@
 </head>
 <body class="student-page">
   <header>
-    Annual Exam Results - 2025
+    Student Marks Lookup
   </header>
-  <div class="lookup-container">
-    <input type="text" id="student-id-input" maxlength="6" placeholder="Enter your Student ID" style="text-transform: uppercase;" />
+  <div class="lookup-container" id="lookupCont">
+    <input type="text" id="student-id-input" placeholder="Enter your Student ID" />
     <select name="class" id="classDropdown">
       <option value="" disabled selected>Select your Class</option>
       <option value="1">Class 1</option>
@@ -115,12 +115,8 @@
       <option value="8">Class 8</option>
       <option value="9">Class 9</option>
     </select>
-    <button id="lookup-btn">Check Results</button>
-    <p style="font-size: 15px;">Developed By <a href="https://instagram.com/naziieee.__" style="color : black;">Nazim Cp</a></p>
+    <button id="lookup-btn">View Marks</button>
     <p id="lookup-error" class="error-message"></p>
-  </div>
-  <div>
-    <h3 id="loading" style="text-align: center;"></h3>
   </div>
   <div id="result" class="result-container" style="display:none;">
     <h2 style="text-align: center;">Muneerul Islam Madrasa, Koottanad Town</h2>
