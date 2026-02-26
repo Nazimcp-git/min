@@ -3,145 +3,208 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Marks Lookup</title>
-  
-  <link rel="stylesheet" href="style.css">
+  <title>Student Portal | Results</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Minimal UI enhancements for student page */
-    .student-page header {
-      background-color: #007bff;
-      color: #fff;
-      padding: 1em;
-      text-align: center;
-      font-size: 1.5em;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-    }
-    .lookup-container {
-      max-width: 400px;
-      margin: 2em auto;
-      background: #fff;
-      padding: 1.5em;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .lookup-container input {
-      width: 80%;
-      padding: 0.75em;
-      margin-bottom: 1em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .lookup-container select {
-      width: 80%;
-      padding: 0.75em;
-      margin-bottom: 1em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .lookup-container button {
-      padding: 0.75em 1.5em;
-      border: none;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .lookup-container button:hover {
-      background-color: #0056b3;
-    }
-    .result-container {
-      max-width: 600px;
-      margin: 2em auto;
-      background: #fff;
-      padding: 1.5em;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .result-container h2 {
-      margin-bottom: 0.5em;
-    }
-    #marks-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-    }
-    #marks-table th,
-    #marks-table td {
-      border: 1px solid #ddd;
-      padding: 0.75em;
-      text-align: left;
-    }
-    #marks-table th {
-      background-color: #f2f2f2;
-    }
-    #summary {
-      margin-top: 2em;
-      padding: 0.75em;
-      background: #e9ecef;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-    .error-message {
-      color: red;
-      margin-top: 1em;
-    }
-    .down{
-      max-width: 600px;
-      margin: 1em auto;
-      margin-top: 0.75em;
-      background: #fff;
-      padding: 1.5em;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-    }
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease; }
+    .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    @media print { .no-print { display: none; } }
   </style>
 </head>
-<body class="student-page">
-  <header>
-    Student Marks Lookup
-  </header>
-  <div class="lookup-container" id="lookupCont">
-    <input type="text" id="student-id-input" placeholder="Enter your Student ID" />
-    <select name="class" id="classDropdown">
-      <option value="" disabled selected>Select your Class</option>
-      <option value="1">Class 1</option>
-      <option value="2">Class 2</option>
-      <option value="3">Class 3</option>
-      <option value="4">Class 4</option>
-      <option value="6">Class 6</option>
-      <option value="8">Class 8</option>
-      <option value="9">Class 9</option>
-    </select>
-    <button id="lookup-btn">View Marks</button>
-    <p id="lookup-error" class="error-message"></p>
-  </div>
-  <div id="result" class="result-container" style="display:none;">
-    <h2 style="text-align: center;">Muneerul Islam Madrasa, Koottanad Town</h2>
-    <h3 style="text-align: center;">Annual Exam Result - 2025</h3>
-    <hr>
-    <h3 id="student-name"></h3>
-    <h4 id="classes"></h4>
-    <p id="overall-status"></p>
-    <table id="marks-table">
-      <thead>
-        <tr>
-          <th>Subject</th>
-          <th>Marks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Marks rows will be inserted here -->
-      </tbody>
-    </table>
-    <div id="summary"></div>
-  </div>
-  
-  <!-- Firebase Scripts -->
+<body class="bg-[#f8fafc] text-slate-900 min-h-screen">
+
+  <nav class="bg-white border-b border-slate-200 py-4 mb-8">
+    <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">M</div>
+        <span class="font-semibold tracking-tight text-slate-800">Muneerul Islam Madrasa</span>
+      </div>
+      <span class="text-xs font-medium text-slate-400 uppercase tracking-widest">2024-25 session</span>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-6 pb-20">
+    
+    <div id="lookupCont" class="max-w-md mx-auto pt-10">
+      <div class="text-center mb-8">
+        <h1 class="text-2xl font-bold text-slate-900">Check Your Marks</h1>
+        <p class="text-slate-500 mt-2">Enter your details below to view your annual report.</p>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+        <div class="space-y-5">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Student ID</label>
+            <input type="text" id="student-id-input" placeholder="Enter ID" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Class</label>
+            <select id="classDropdown" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all appearance-none cursor-pointer">
+              <option value="" disabled selected>Select Class</option>
+              <option value="1">Class 1</option>
+              <option value="2">Class 2</option>
+              <option value="3">Class 3</option>
+              <option value="4">Class 4</option>
+              <option value="6">Class 6</option>
+              <option value="8">Class 8</option>
+              <option value="9">Class 9</option>
+            </select>
+          </div>
+
+          <button id="lookup-btn" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-3.5 rounded-xl transition-all shadow-lg active:scale-[0.98] flex justify-center items-center gap-2">
+            <span>View Marks</span>
+          </button>
+          <p class="text-slate-500 mt-2" style="text-align: center; font-weight: 500;">Developed By <a href="https://instagram.com/naziieee.__" style="font-weight: 700; color: black;">Nazim</a></p>
+          
+          <p id="lookup-error" class="text-rose-500 text-sm text-center font-medium min-h-[1.25rem]"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="result" class="hidden">
+      <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
+        
+        <div class="p-8 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 id="student-name" class="text-3xl font-bold text-slate-900"></h2>
+            <div class="flex items-center gap-3 mt-2">
+              <span id="classes" class="bg-slate-200 text-slate-700 px-3 py-1 rounded-md text-sm font-medium"></span>
+              <span id="overall-badge" class="px-3 py-1 rounded-md text-sm font-bold uppercase tracking-tight"></span>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="p-8">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100">
+                <th class="pb-4 px-2">Subject Name</th>
+                <th class="pb-4 px-2 text-right">Marks Obtained</th>
+              </tr>
+            </thead>
+            <tbody id="marks-tbody" class="divide-y divide-slate-50">
+              </tbody>
+          </table>
+        </div>
+
+        <div class="p-8 bg-slate-900 text-white flex flex-wrap justify-between items-center gap-6">
+          <div class="flex gap-10">
+            <div>
+              <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Total Marks</p>
+              <p id="total-display" class="text-2xl font-bold"></p>
+            </div>
+            <div>
+              <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Percentage</p>
+              <p id="percent-display" class="text-2xl font-bold"></p>
+            </div>
+          </div>
+          <button onclick="location.reload()" class="no-print bg-white/10 hover:bg-white/20 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">
+            Check Another
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script src="student.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXJ_RnfjUDi7qPDATWVnS5lSFw6jVRYgo",
+      authDomain: "shopping-e284c.firebaseapp.com",
+      databaseURL: "https://shopping-e284c-default-rtdb.firebaseio.com",
+      projectId: "shopping-e284c",
+      storageBucket: "shopping-e284c.appspot.com",
+      messagingSenderId: "248274428739",
+      appId: "1:248274428739:web:fc30dd9eb1ef83f610c5f6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    document.getElementById("lookup-btn").addEventListener("click", lookupStudent);
+
+    async function lookupStudent() {
+      const studentId = document.getElementById("student-id-input").value.trim();
+      const classId = document.getElementById("classDropdown").value;
+      const errorEl = document.getElementById("lookup-error");
+      
+      if (!studentId || !classId) {
+        errorEl.innerText = "Please provide both ID and Class.";
+        return;
+      }
+
+      errorEl.innerText = "Searching...";
+
+      try {
+        const snapshot = await db.ref("teachers").once("value");
+        let found = false;
+        let data = { student: null, subjects: null };
+
+        snapshot.forEach(teacherSnap => {
+          const teacher = teacherSnap.val();
+          if (teacher.students && teacher.students[studentId]) {
+            found = true;
+            data.student = teacher.students[studentId];
+            data.subjects = teacher.subjects || {};
+          }
+        });
+
+        if (!found) {
+          errorEl.innerText = "No student found with this ID.";
+          return;
+        }
+
+        displayResult(data.student, data.subjects, classId);
+
+      } catch (err) {
+        errorEl.innerText = "Connection error. Try again.";
+      }
+    }
+
+    function displayResult(student, subjects, classId) {
+      document.getElementById("lookupCont").classList.add("hidden");
+      document.getElementById("result").classList.remove("hidden");
+      
+      document.getElementById("student-name").innerText = student.name;
+      document.getElementById("classes").innerText = `Class ${classId}`;
+      
+      // Status Badge Logic
+      const badge = document.getElementById("overall-badge");
+      const status = student.overallStatus || "Results Pending";
+      badge.innerText = status;
+      badge.className = status.toLowerCase().includes("pass") 
+        ? "px-3 py-1 rounded-md text-sm font-bold uppercase bg-emerald-100 text-emerald-700" 
+        : "px-3 py-1 rounded-md text-sm font-bold uppercase bg-rose-100 text-rose-700";
+
+      const tbody = document.getElementById("marks-tbody");
+      tbody.innerHTML = "";
+      
+      let total = 0;
+      let count = 0;
+
+      for (let key in subjects) {
+        count++;
+        const score = (student.marks && student.marks[key]) ? Number(student.marks[key].score || 0) : 0;
+        total += score;
+
+        const row = `
+          <tr class="group hover:bg-slate-50 transition-colors">
+            <td class="py-5 px-2 font-medium text-slate-700">${subjects[key].name}</td>
+            <td class="py-5 px-2 text-right font-bold text-slate-900">${score} <span class="text-slate-300 font-normal">/ 50</span></td>
+          </tr>
+        `;
+        tbody.insertAdjacentHTML('beforeend', row);
+      }
+
+      const outOf = count * 50;
+      const percent = outOf > 0 ? ((total / outOf) * 100).toFixed(1) : 0;
+
+      document.getElementById("total-display").innerText = `${total} / ${outOf}`;
+      document.getElementById("percent-display").innerText = `${percent}%`;
+    }
+  </script>
 </body>
 </html>
