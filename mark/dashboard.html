@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal Admin - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+  <header>
+    <button style="padding: 8; margin: 0;" onclick="meNu()" id="close"><b>Menu</b></button>
+    <h1>Student Portal Admin</h1>
+    <div class="user-info">
+      <span id="teacher-email"></span>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </header>
+  <div class="dashboard-container" onclick="cloSe()">
+    <nav class="sidebar" id="sideb">
+      <ul>
+        <li data-target="subjects" class="active">Subjects</li>
+        <li data-target="students">Students</li>
+        <li data-target="marks">Marks</li>
+      </ul>
+    </nav>
+    <main class="main-content">
+      <!-- Subjects Section -->
+      <section id="subjects-section" class="content-section active">
+        <h2>Manage Subjects</h2>
+        <div class="form-group">
+          <input type="text" id="subject-name" placeholder="Enter Subject Name" />
+          <button id="add-subject-btn">Add Subject</button>
+        </div>
+        <h3>Subject List</h3>
+        <ul id="subject-list"></ul>
+      </section>
+
+      <!-- Students Section (includes overall pass/fail status) -->
+      <section id="students-section" class="content-section">
+        <h2>Manage Students</h2>
+        <div class="form-group">
+          <input type="text" id="student-name" placeholder="Enter Student Name" />
+          <button id="add-student-btn">Add Student</button>
+        </div>
+        <h3>Student List</h3>
+        <table id="student-table">
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Overall Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Student rows go here -->
+          </tbody>
+        </table>
+        <button id="update-status-btn">Calculate Overall Status</button>
+      </section>
+
+      <!-- Marks Section (for entering marks only) -->
+      <section id="marks-section" class="content-section">
+        <h2>Update Marks</h2>
+        <div class="form-group">
+          <label for="marks-subject-dropdown">Select Subject:</label>
+          <select id="marks-subject-dropdown">
+            <option value="">--Select Subject--</option>
+          </select>
+        </div>
+        <h3>Student Marks</h3>
+        <table id="marks-table">
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Student Name</th>
+              <th>Marks</th>
+            </tr>
+          </thead>
+          <tbody id="marks-table-body">
+            <!-- Dynamic rows go here -->
+          </tbody>
+        </table>
+        <button id="save-marks-btn">Save All Marks</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
